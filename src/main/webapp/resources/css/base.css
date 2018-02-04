@@ -1,0 +1,719 @@
+#mainBody { /* background: url(../images/seperator.png) repeat-x 0 0; */
+    border-top: 2px solid #dedede;
+    padding-top: 18px;
+}
+
+#carouselBlk, #header {
+    background:  repeat-x 0 0 #f7f7f7;
+}
+li a .active{
+    background: #0e90d2;
+}
+input{
+    height: 30px !important;
+}
+.tag {
+    background:  no-repeat 0 0;
+    position: absolute;
+    display: block;
+    top: -4px;
+    right: -18px;
+    height: 48px;
+    width: 48px;
+}
+.header__fixed {
+    line-height: 20px !important;
+    top: 0px;
+    transition: all 0.2s;
+    z-index: 99999;
+}
+#customer-action{
+    float: left;
+    position: relative;
+    width: 20%;
+    height: auto;
+}
+#customer-action:hover #submenu{
+    display: block;
+    z-index: 9999;
+}
+#submenu{
+    width: 100%;
+    display: none;
+    position: absolute;
+    background: #ebebeb;
+    top: 90%;
+    left: 5%;
+    padding: 2%;
+    border-radius: 5%;
+}
+#submenu li{
+    list-style: none;
+    outline: none;
+    text-decoration: none;
+    line-height: 5px;
+}
+
+.clr {
+    clear: both;
+}
+
+.cntr {
+    text-align: center
+}
+
+.marginLess {
+    margin: 0
+}
+
+#logoArea, #logoArea a {
+    line-height: 49px;
+}
+
+#logoArea .btn, #logoArea .btn-group {
+    margin-top: 0;
+}
+
+#logo {
+    padding-right: 20px;
+}
+
+#welcomeLine {
+    padding: 8px 0 4px
+}
+a:hover{
+    color: red;
+}
+a{
+    cursor: pointer;
+}
+.loved{
+    color: #fbb450;
+}
+.like{
+    color: #003bb3;
+}
+.dislike{
+    color: red;
+}
+#love,#dislike,#like{
+    font-size: 24px;
+}
+/* Sidebar--------- */
+#myCart img {
+    float: left;
+    margin-right: 8px;
+}
+
+#myCart .badge {
+    padding: 9px;
+}
+
+#myCart {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 33px;
+}
+
+#sidebar ul ul li a {
+    font-size: 12px;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#sidebar li a {
+    font-weight: bold;
+    background: url(../../webapp/resources/images/tabRepeatInactive.png) repeat-x 0 0;
+    color: #262626;
+}
+
+#sidebar ul li li a {
+    background: #eee;
+    padding-left: 14px;
+    font-weight: normal;
+    display: block;
+    font-size: 13px;
+    line-height: 26px;
+}
+
+/* body--- */
+.thumbnail > a {
+    display: block;
+    text-align: center
+}
+
+.thumbnail h5, .thumbnail p {
+    text-align: center
+}
+
+/* Product page--- */
+.alignR {
+    text-align: right;
+}
+
+.control-label.alignL, .alignL {
+    text-align: left;
+}
+
+.loginFrm {
+    margin-bottom: 8px;
+}
+
+.loginFrm .control-group {
+    padding: 8px 14px 0;
+    margin-bottom: 0
+}
+
+/* Carousel  */
+#myCarousel {
+    text-align: center;
+    margin-bottom: 0
+}
+
+#myCarousel .btn {
+    position: absolute;
+    bottom: 10%;
+    right: 17%;
+    padding: 2% 6%;
+    z-index: 9999
+}
+
+#myCarousel .carousel-caption {
+    display: none;
+}
+
+#myCarousel.homCar .item img {
+    width: 100%;
+    max-height: 506px
+}
+
+#productView .btn-toolbar {
+    padding-left: 3px;
+}
+
+#productDetail > li, .nav-pills > li {
+    float: right;
+}
+
+#myTabContent {
+    text-align: justify
+}
+
+#compairTbl td {
+    text-align: center;
+}
+
+#accordion2, #legalNotice, .justify, #mainCol {
+    text-align: justify
+}
+
+#myCarousel .carousel-control {
+    display: none
+}
+
+#myCarousel:hover .carousel-control {
+    display: block
+}
+
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+    color: #fff;
+    background-color: #CF0007;
+    text-shadow: none;
+}
+
+/* Footer section--------------- */
+#footerSection {
+    background: #202020;
+    color: white;
+    padding: 28px 0 44px;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+}
+
+#footerSection a {
+    color: #ccc;
+    font-size: 11px;
+    padding: 0;
+    line-height: 24px;
+    display: block;
+}
+
+#footerSection a:hover {
+    color: #fff;
+}
+
+#footerSection #socialMedia a {
+    min-width: 25px;
+    display: inline;
+    margin-right: 6px;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+#socialMedia img {
+    max-width: 60px;
+}
+
+#footerSection #socialMedia a:hover {
+    background: none;
+}
+
+/* ===================================================== */
+/* Light Box------------------- */
+#jquery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 500px;
+}
+
+#jquery-lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+    line-height: 0;
+}
+
+#jquery-lightbox a img {
+    border: none;
+}
+
+#lightbox-container-image-box {
+    position: relative;
+    background-color: #fff;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+#lightbox-container-image {
+    padding: 10px;
+}
+
+#lightbox-loading {
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+
+#lightbox-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+#lightbox-container-image-box > #lightbox-nav {
+    left: 0;
+}
+
+#lightbox-nav a {
+    outline: none;
+}
+
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+    width: 49%;
+    height: 100%;
+    zoom: 1;
+    display: block;
+}
+
+#lightbox-nav-btnPrev {
+    left: 0;
+    float: left;
+}
+
+#lightbox-nav-btnNext {
+    right: 0;
+    float: right;
+}
+
+#lightbox-container-image-data-box {
+    font: 10px Verdana, Helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0 auto;
+    line-height: 1.4em;
+    overflow: auto;
+    padding: 0 10px 0;
+}
+
+#lightbox-container-image-data {
+    padding: 0 10px;
+    color: #666;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+#lightbox-container-image-data #lightbox-image-details {
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+
+#lightbox-image-details-caption {
+    font-weight: bold;
+}
+
+#lightbox-image-details-currentNumber {
+    display: block;
+    clear: left;
+    padding-bottom: 1.0em;
+}
+
+#lightbox-secNav-btnClose {
+    width: 66px;
+    float: right;
+    padding-bottom: 0.7em;
+}
+
+.navbar .nav > li > a {
+    padding: 10px;
+    color: #DDD;
+    text-shadow: none;
+    font-size: 16px;
+}
+
+.navbar .nav > li > a:hover {
+    color: #fff
+}
+
+#logoArea, #logoArea a {
+    outline: none;
+}
+
+.alignR .checkbox input[type="checkbox"] {
+    float: right;
+    margin: 4px 0 8px 11px;
+}
+
+#logoArea #smallScreen {
+    margin: 21px 14px 0 0;
+}
+
+.navbar-search {
+    margin-top: 8px;
+}
+
+/* Responsive--------------------- */
+/* Large desktop */
+@media (min-width: 1200px) {
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .header{
+        width: 100%;
+    }
+    .navbar .brand {
+        float: none;
+        text-align: center;
+    }
+
+    #sideManu, #topMenu {
+        height: 0
+    }
+
+    .navbar-search {
+        margin-top: 8px;
+        width: 100%;
+        float: none;
+    }
+
+    #topMenu {
+        height: auto;
+        float: none;
+    }
+
+    #topMenu li {
+        float: none;
+    }
+
+    .navbar .nav > li > a {
+        border-top: 1px solid #666;
+        padding: 0
+    }
+
+    #sideManu, #topMenu {
+        height: 0
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .navbar .brand {
+        float: none;
+        text-align: center;
+    }
+    .navbar .brand img{
+        width: 100%;
+    }
+
+    #header, #carouselBlk {
+        margin: 0 -20px;
+    }
+
+    #sideManu, #topMenu {
+        height: 0
+    }
+
+    .navbar-search {
+        margin-top: 8px;
+        width: 100%;
+        float: none;
+    }
+
+    #topMenu {
+        height: auto;
+        float: none;
+    }
+
+    #topMenu li {
+        float: none;
+    }
+
+    .navbar .nav > li > a {
+        border-top: 1px solid #666;
+        padding: 0
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    #header, #carouselBlk {
+        margin: 0 -20px;
+    }
+
+    #sideManu, #topMenu {
+        height: 0
+    }
+
+    #topMenu {
+        height: auto;
+        float: none;
+    }
+
+    #topMenu li {
+        float: none;
+    }
+
+    .navbar .nav > li > a {
+        border-top: 1px solid #666;
+        padding: 0
+    }
+}
+
+/* Sửa 1 tí với cái form login */
+
+
+#sm {
+    text-align: right
+}
+
+#sm a {
+    margin: 4px;
+    width: 32px;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-header h3 {
+    text-align: center;
+}
+
+/* Menu đa cấp của cái change language*/
+.nav li {
+    position: relative;
+    list-style: none;
+}
+
+.sub-menu1 {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 70%;
+    width: 150px;
+    background: #ebebeb;
+    padding: 5px 30px;
+    border-radius: 5%;
+}
+
+.nav li:hover > .sub-menu1 {
+    display: block;
+    z-index: 9999;
+}
+
+.nav li .sub-menu1 {
+    top: 50px;
+    left: 0;
+}
+ /*Dialog confirm*/
+.dialog-ovelay {
+    width:100%;
+    height:2000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; bottom : 0;
+    background-color: rgba(0, 0, 0, 0.50);
+    z-index: 999999;
+    bottom: 0;
+}
+
+.dialog-ovelay .dialog {
+    position: fixed;
+    width: 400px;
+    top: 10%;
+    left: 38%;
+    margin: 100px auto 0;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    overflow: hidden
+}
+
+.dialog-ovelay .dialog .head {
+    padding: 10px 8px;
+    background-color: #f6f7f9;
+    border-bottom: 1px solid #e5e5e5
+}
+
+.dialog h3 {
+    font-weight: bold; margin : 10px;
+    color: red;
+    display: inline-block;
+    margin: 10px;
+}
+
+.dialog b {
+    color: red;
+}
+
+.dialog-ovelay .dialog .head .fa-close {
+    float: right;
+    color: #c4c5c7;
+    cursor: pointer;
+    transition: all .5s ease;
+    padding: 0 2px;
+    border-radius: 1px
+}
+
+.dialog-ovelay .dialog .head .fa-close:hover {
+    color: #b9b9b9
+}
+
+.dialog-ovelay .dialog .head .fa-close:active {
+    box-shadow: 0 0 5px #673AB7;
+    color: #a2a2a2
+}
+
+.dialog-ovelay .dialog .dialog-msg {
+    padding: 12px 10px
+}
+
+.dialog-ovelay .dialog .dialog-msg p {
+    margin: 0;
+    font-size: 15px;
+    color: #333
+}
+
+.dialog-ovelay .dialog .footer {
+    border-top: 1px solid #e5e5e5;
+    padding: 8px 10px
+}
+
+
+.dialog-ovelay .dialog .footer .controls {
+    margin-left: 55%;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.button-default {
+    background-color:red;
+    color: white;
+}
+
+.button-danger {
+    background-color: #33b040;
+    color: #f5f5f5
+}
+
+.link {
+    padding: 5px 10px;
+    cursor: pointer
+}
+
+
+/*Css cho trang cá nhân */
+.gird{
+    width:100%;
+    min-height: 500px;
+    background:#CCC;
+}
+.grid .left{
+    width:20%;
+    height:900px;
+    background:#DDDDDD;
+    float:left;
+    margin-left: 200px;
+}
+.grid .wellcome{
+    width:100%;
+    height:70px;
+    background:#999;
+}
+.avata{
+    width:100%;
+    height:250px;
+    background:#999;
+}
+.grid .menu{
+    width:100%;
+    height:50px;
+    background:#FFF;
+}
+.grid .right{
+    width:80%;
+    height:900px;
+    background:#DDDDDD;
+    float:left;
+}
+.QLTK{
+    width:100%;
+    height:300px;
+    background:#DDDDDD;
+}
+.personal{
+    width:30%;
+    height:300px;
+    background:#EEEEEE;
+    float:left;
+    margin-left:30px;
+}
+.RecentOrders{
+    width:100%;
+    height:420px;
+    background:#EEEEEE;
+    overflow:auto;
+}
+
