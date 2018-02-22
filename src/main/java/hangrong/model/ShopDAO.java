@@ -16,8 +16,10 @@ public class ShopDAO {
 
     @Autowired
     SessionFactory sessionFactory;
+    @Autowired
+    CrudRepository cr;
 
-    public ArrayList<Shop> getShops(int page,int size) {
+    public ArrayList<Shop> getShops(int page, int size) {
         int firstResult = (page - 1) * size;
         Session session = sessionFactory.getCurrentSession();
         Query<Shop> query = session.createQuery("FROM Shop");
@@ -26,56 +28,36 @@ public class ShopDAO {
         return (ArrayList<Shop>) query.list();
     }
 
-    public Shop getShopByEmail(String email){
+    public Shop getShopByEmail(String email) {
         Session session = sessionFactory.getCurrentSession();
         try {
             String hql = "SELECT s FROM Shop s WHERE s.email = :email";
             Query<Shop> query = session.createQuery(hql);
-            query.setParameter("email",email);
+            query.setParameter("email", email);
             return query.getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public Shop getShop(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Shop.class, id);
     }
 
-    public boolean saveShop(Shop Shop) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.save(Shop);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean saveShop(Shop shop) {
+        return cr.save(shop);
     }
 
     public boolean updateShop(Shop shop) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.update(shop);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        return cr.update(shop);
     }
 
-    public boolean deleteShop(int ShopId) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.delete(ShopId);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean deleteShop(int shopId) {
+        Shop shop = getShop(shopId);
+        return cr.delete(shop);
     }
-
 
 
 }

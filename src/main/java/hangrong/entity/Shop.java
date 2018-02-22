@@ -1,6 +1,5 @@
 package hangrong.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -10,88 +9,93 @@ import java.util.List;
 
 @Entity
 public class Shop {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	@Column(name="email",unique=true)
-	private String email;
-	private String name;
-	@Column(name="join_date")
-	@Temporal(TemporalType.DATE)
-	private Date joinDate;
-	private String avatar;
-	private String level;
-	@OneToMany(mappedBy="shop")
-	private List<Product> products;
 
-	public Shop() {
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "email", unique = true)
+    private String email;
+    private String name;
+    @Column(name = "join_date")
+    @Temporal(TemporalType.DATE)
+    private Date joinDate;
+    private String avatar;
+    private String level;
+    @OneToMany(mappedBy = "shop")
+    private List<Product> products;
+    @OneToMany(mappedBy = "shop")
+    private List<Order> orders;
 
-	public Shop(String email, String name, String avatar, String level) {
-		this.email = email;
-		this.name = name;
-		this.avatar = avatar;
-		this.level = level;
-	}
-	
-	public String getJoinDate() {
-		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-		return format.format(joinDate);
-	}
+    public Shop() {
+    }
 
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
-	}
+    public Shop(String email, String name, String avatar, String level) {
+        this.email = email;
+        this.name = name;
+        this.avatar = avatar;
+        this.level = level;
+    }
 
-	public List<Product> getListProduct() {
-		return new ArrayList<Product>(products);
-	}
+    public ArrayList<Order> getOrders() {
+        return new ArrayList<Order>(orders);
+    }
 
-	public void setListProduct(List<Product> listProduct) {
-		this.products = listProduct;
-	}
+    public String getJoinDate() {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        return format.format(joinDate);
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public List<Product> getListProduct() {
+        return new ArrayList<Product>(products);
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setListProduct(List<Product> listProduct) {
+        this.products = listProduct;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getAvatar() {
-		return avatar;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getLevel() {
-		return level;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setLevel(String level) {
-		this.level = level;
-	}
-	
-	
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
 
 }

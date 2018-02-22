@@ -18,14 +18,14 @@ public class HomeController {
     @Autowired
     ProductDAO productDAO;
 
-    // Chuyển đến phương thức home
+
     @RequestMapping("/")
     protected String redirectToHome() {
         return "redirect:home.html";
     }
 
-    @GetMapping("/home") // Hiển thị trang chủ
-    protected String home(Model model) {
+    @GetMapping("/home")
+    protected String showHomePage (Model model) {
         ArrayList<Product> newProducts = productDAO.getAllProduct(1,8);
         ArrayList<Product> featureProducts = productDAO.getFeatureProducts(1,6);
         model.addAttribute("newProducts", newProducts);

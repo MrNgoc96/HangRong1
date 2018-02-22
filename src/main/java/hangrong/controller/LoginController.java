@@ -27,41 +27,41 @@ public class LoginController {
     GoogleService googleService;
     @Autowired
     ProductDAO productDAO;
-    // Kiểm tra loại tài khoàn và chuyển đến trang phù hợp
+
     @GetMapping("/login")
-    protected String login(HttpSession session) {
-        String userRole =  session.getAttribute("userRole")+"";
-        if(userRole.equals("Shop")){
+    protected String checkViewForUser(HttpSession session) {
+        String userRole = session.getAttribute("userRole") + "";
+        if (userRole.equals("Shop")) {
             return "redirect:shop-management.html";
-        }else if(userRole.equals("Customer")){
+        } else if (userRole.equals("Customer")) {
             return "redirect:home.html";
-        }else{
+        } else {
             return "redirect:admin-management.html";
         }
     }
 
-    @PostMapping("/login") // Đăng nhập vào hệ thống
+    @PostMapping("/login")
     protected String login(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
         String view = "index";
         if (userDAO.checkLogin(username, password)) {
-            checkUserRole(username,session);
+            checkUserRole(username, session);
             view = "redirect:login.html";
         } else {
-            model.addAttribute("message","Tài khoản hoặc mật khẩu không chính xác !");
+            model.addAttribute("message", "Tài khoản hoặc mật khẩu không chính xác !");
         }
         return view;
     }
 
 
     @PostMapping("/google-log-in")
-    protected String googleLogin(@RequestParam String idToken, HttpSession session,Model model) {
+    protected String googleLogin(@RequestParam String idToken, HttpSession session, Model model) {
         GoogleIdToken.Payload payload = googleService.getGoogleUser(idToken);
         String email = payload.getEmail();
         User user = userDAO.getUser(email);
         if (user == null) {
-            model.addAttribute("message",email);
+            model.addAttribute("message", email);
         } else {
-            checkUserRole(email,session);
+            checkUserRole(email, session);
             session.setAttribute("googleLogin", true);
         }
 
@@ -76,25 +76,25 @@ public class LoginController {
     }
 
     @GetMapping("/google-log-out")
-    protected String googleSignOut(HttpSession session) {
+    protected String googleLogOut(HttpSession session) {
         session.setAttribute("googleLogin", null);
         session.setAttribute("currentUser", null);
         return "index";
     }
 
-    public void checkUserRole(String username, HttpSession session) {
+    private void checkUserRole(String username, HttpSession session) {
         User user = userDAO.getUser(username);
         if (user.getRole().equals("Shop")) {
             Shop shop = shopDAO.getShopByEmail(username);
             session.setAttribute("currentUser", shop);
-            session.setAttribute("userRole","Shop");
+            session.setAttribute("userRole", "Shop");
         } else if (user.getRole().equals("Customer")) {
             Customer customer = customerDAO.getCustomerByEmail(username);
             session.setAttribute("currentUser", customer);
-            session.setAttribute("userRole","Customer");
+            session.setAttribute("userRole", "Customer");
         } else {
             session.setAttribute("currentUser", user);
-            session.setAttribute("userRole","Admin");
+            session.setAttribute("userRole", "Admin");
         }
     }
 }

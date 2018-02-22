@@ -36,6 +36,34 @@ function getProductDetails() {
     $('#product-details').val(details);
 }
 
+// Cập nhật tình trang đơn hàng
+function updateOrderStatus(orderId, statusId) {
+    let link = './shop-management.html?updateOrderStatus&orderId=' + orderId + '&statusId=' + statusId;
+    let orderStatus;
+    if (statusId == 1) {
+        orderStatus = 'Đang giao hàng'
+    } else {
+        orderStatus = "Đã nhận hàng"
+    }
+    Confirm("Cập nhật đơn hàng", "Xác nhận thay đổi trạng thái của đơn hàng là <b>" + orderStatus + "</b> ?", "Đồng ý", "Hủy", link)
+
+}
+
+function deleteOrder(orderId) {
+    let link = './shop-management.html?deleteOrder&orderId=' + orderId;
+    Confirm("Xóa đơn hàng", "Xác nhận xóa bỏ đơn hàng <b>DH" + orderId + "</b> ?", "Đồng ý", "Hủy", link)
+}
+
+
+// Xem chi tiết đơn hàng
+function viewOrder(orderId) {
+    $.get('./view-order-details.html?orderId=' + orderId).done(function (data) {
+        let allData = $('<div/>').html(data);
+        let orderDetails = allData.find("#orderDetails");
+        $('#orderDetails').replaceWith(orderDetails);
+    }, 'html')
+}
+
 // Thêm các thông tin chi tiết cho sản phẩm
 function addDetail() {
     let param = $('#param').val();
@@ -128,9 +156,9 @@ function validateProductForm() {
         $('#error-intro').show()
         return false;
     }
-    if(form.has('#product-discount').length){
+    if (form.has('#product-discount').length) {
         let discount = $('#product-discount')
-        if(isNaN(discount.val())==true || discount <= 0 || discount.val()==""){
+        if (isNaN(discount.val()) == true || discount <= 0 || discount.val() == "") {
             return false;
         }
     }

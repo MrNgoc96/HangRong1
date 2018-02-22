@@ -44,11 +44,29 @@
                                 class="fa fa-list fa-3x"></i> Tất cả các sản phẩm</a>
                     </li>
                     <li>
-                        <a href="adOrderProduct.html"><i class="fa fa-credit-card fa-3x"></i>Đơn hàng</a>
+                        <a  class="${view=='orders'? 'active-menu':''}" href="shop-management.html?managementOrders"><i class="fa fa-credit-card fa-3x"></i>Đơn hàng</a>
                     </li>
                     <li>
                         <a class="${view=='new-product'? 'active-menu':''}" href="shop-management.html?newProduct"><i
                                 class="fa fa-newspaper-o fa-3x"></i>Thêm sản phẩm mới</a>
+                    </li>
+                    <li><a href="${googleLogin==true?'#':'log-out.html'}" onclick="${googleLogin==true?'signOut()':''}"><i
+                            class="fa fa-sign-out fa-3x"></i> Đăng
+                        xuất</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${sessionScope.userRole=='Admin'}">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center bg-color-red"><h3 style="font-weight: bold;">${sessionScope.currentUser.name}</h3></li>
+                    <li class="text-center">
+                        <img src="https://www.codetechnology.in/wp-content/uploads/2017/05/user-icon-6.png" class="user-image img-responsive"/>
+                    </li>
+                    <li>
+                        <a class="${view=='users'||view =='edit-product'? 'active-menu':''}" href="shop-management.html"><i
+                                class="fa fa-list fa-3x"></i> Quản lý tài khoản</a>
+                    </li>
+                    <li>
+                        <a href="adOrderProduct.html"><i class="fa fa-credit-card fa-3x"></i>Đơn hàng</a>
                     </li>
                     <li><a href="${googleLogin==true?'#':'log-out.html'}" onclick="${googleLogin==true?'signOut()':''}"><i
                             class="fa fa-sign-out fa-3x"></i> Đăng

@@ -27,14 +27,12 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "shop_id")
     private Shop shop;
-    @OneToMany(mappedBy = "product")
-    private List<Reviews> reviews;
 
     public Product() {
         // TODO Auto-generated constructor stub
     }
 
-    public Product(String name, double price, String image, String intro, String detail, boolean status,Date saleDate,double discount,
+    public Product(String name, double price, String image, String intro, String detail, boolean status, Date saleDate, double discount,
                    int rate, Category category, Shop shop) {
         this.name = name;
         this.price = price;
@@ -62,8 +60,8 @@ public class Product {
         return discount;
     }
 
-    public double getNewPrice(){
-        return price * (1-discount);
+    public double getNewPrice() {
+        return price * (1 - discount);
     }
 
     public void setDiscount(double discount) {
@@ -74,16 +72,12 @@ public class Product {
         return rate;
     }
 
-    public List<Reviews> getReviews() {
-        return reviews;
-    }
-
     public void setRate(int rate) {
         this.rate = rate;
     }
 
     public String getId() {
-        return "SP"+id;
+        return "SP" + id;
     }
 
     public void setId(int id) {

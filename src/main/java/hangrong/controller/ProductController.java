@@ -18,7 +18,9 @@ public class ProductController {
     @Autowired
     ProductDAO productDAO;
 
-    final int PAGE_SIZE = 6;
+    private final int PAGE_SIZE = 6;
+    private final String PRODUCT_DETAIL_VIEW_NAME =  "client-views/product-detail";
+    private final String PRODUCTS_VIEW_NAME = "client-views/products";
 
     // Hiển thị chi tiết sản phẩm
     @GetMapping("/products")
@@ -30,7 +32,7 @@ public class ProductController {
         model.addAttribute("product",product);
         model.addAttribute("relatedProducts",relatedProducts);
         model.addAttribute("shop",shop);
-        return "product-detail";
+        return PRODUCT_DETAIL_VIEW_NAME;
     }
 
     // Tìm kiếm sản phẩm
@@ -45,7 +47,7 @@ public class ProductController {
         model.addAttribute("key",key);
         model.addAttribute("categoryId",categoryId);
         model.addAttribute("totalPages",totalPages);
-        return "products";
+        return PRODUCTS_VIEW_NAME;
     }
 
 

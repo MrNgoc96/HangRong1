@@ -9,14 +9,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <html>
-<jsp:include page="head.jsp"/>
+<jsp:include page="common/head.jsp"/>
 <body>
-<jsp:include page="menu.jsp"/>
-<jsp:include page="slider.jsp"/>
+<jsp:include page="common/menu.jsp"/>
+<jsp:include page="common/slider.jsp"/>
 <div id="mainBody">
     <div class="container">
         <div class="row">
-            <jsp:include page="sitebar.jsp"/>
+            <jsp:include page="common/sitebar.jsp"/>
             <div class="span9">
                 <div class="well well-small">
                     <h4> <s:message code="home.latestProduct" />
@@ -101,6 +101,6 @@
         </div>
     </div>
 </div>
-<jsp:include page="footer.jsp"/>
+<jsp:include page="common/footer.jsp"/>
 </body>
 </html>

@@ -381,6 +381,10 @@ a{
     float: right;
     padding-bottom: 0.7em;
 }
+.error{
+    color: red;
+    display: none;
+}
 
 .navbar .nav > li > a {
     padding: 10px;
@@ -670,45 +674,23 @@ a{
     min-height: 500px;
     background:#CCC;
 }
-.grid .left{
-    width:20%;
-    height:900px;
-    background:#DDDDDD;
-    float:left;
-    margin-left: 200px;
-}
-.grid .wellcome{
-    width:100%;
-    height:70px;
-    background:#999;
-}
-.avata{
-    width:100%;
-    height:250px;
-    background:#999;
-}
 .grid .menu{
     width:100%;
     height:50px;
     background:#FFF;
 }
-.grid .right{
-    width:80%;
-    height:900px;
-    background:#DDDDDD;
-    float:left;
-}
+
 .QLTK{
     width:100%;
-    height:300px;
+    min-height:300px;
     background:#DDDDDD;
 }
 .personal{
-    width:30%;
+    width:40%;
+    padding: 10px;
     height:300px;
     background:#EEEEEE;
     float:left;
-    margin-left:30px;
 }
 .RecentOrders{
     width:100%;

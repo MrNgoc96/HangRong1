@@ -37,7 +37,9 @@
                         <label>Giảm giá (%)</label>
                         <input name="discount" value="${product.discount * 100}" id="product-discount"
                                class="form-control">
-                        <div class="input-error" id="error-discount">Bạn phải nhập giảm giá là số và phải lớn hơn hoặc bằng 0 !</div>
+                        <div class="input-error" id="error-discount">Bạn phải nhập giảm giá là số và phải lớn hơn hoặc
+                            bằng 0 !
+                        </div>
                         <br>
                         <input name="detail" type="hidden" id="product-details"/>
                         <a data-toggle="modal" data-target="#details" class="btn btn-primary"><i
@@ -96,7 +98,8 @@
 </div>
 <c:if test="${updateSucceed != null}">
     <span class="hidden" id="title"><s:message code="shop-management.product.popup-title"/></span>
-    <span class="hidden" id="message"><s:message code="shop-management.product.updateSucceed" arguments="${updateSucceed}"/></span>
+    <span class="hidden" id="message"><s:message code="shop-management.product.updateSucceed"
+                                                 arguments="${updateSucceed}"/></span>
     <script>
         let title = $('#title').html();
         let msg = $('#message').html();

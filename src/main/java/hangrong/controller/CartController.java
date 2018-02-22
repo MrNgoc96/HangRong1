@@ -18,9 +18,11 @@ public class CartController {
     @Autowired
     ProductDAO productDAO;
 
+    private final String CART_VIEW_NAME = "client-views/cart";
+
     @GetMapping("/view-cart")
     public String viewCart() {
-        return "cart";
+        return CART_VIEW_NAME;
     }
 
     @GetMapping("/add-to-cart")
@@ -42,7 +44,7 @@ public class CartController {
             cartBean.removeProduct(productId);
             session.setAttribute("cartBean", cartBean);
         }
-        return "cart";
+        return CART_VIEW_NAME;
     }
 
     @GetMapping("/update-quantity")
@@ -50,7 +52,7 @@ public class CartController {
         CartBean cartBean = (CartBean) session.getAttribute("cartBean");
         ProductPTO productPTO = cartBean.get(productId);
         if (productPTO == null) {
-            return "cart";
+            return CART_VIEW_NAME;
         }
         cartBean.removeProduct(productId);
         int quantity = productPTO.getQuantity();
@@ -63,7 +65,7 @@ public class CartController {
         }
         cartBean.addProduct(productPTO);
         session.setAttribute("cartBean", cartBean);
-        return "cart";
+        return CART_VIEW_NAME;
     }
 
 }

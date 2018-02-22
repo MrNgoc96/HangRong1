@@ -16,6 +16,8 @@ public class CustomerDAO {
 
     @Autowired
     SessionFactory sessionFactory;
+    @Autowired
+    CrudRepository cr;
 
     public ArrayList<Customer> getCustomers(int firstResult,int size) {
         Session session = sessionFactory.getCurrentSession();
@@ -44,37 +46,17 @@ public class CustomerDAO {
         }
     }
 
-    public boolean saveCustomer(Customer Customer) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.save(Customer);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean saveCustomer(Customer customer) {
+        return cr.save(customer);
     }
 
-    public boolean updateCustomer(Customer Customer) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.update(Customer);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean updateCustomer(Customer customer) {
+        return cr.update(customer);
     }
 
-    public boolean deleteCustomer(int CustomerId) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
-            session.delete(CustomerId);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean deleteCustomer(int customerId) {
+        Customer customer = getCustomer(customerId);
+        return cr.delete(customer);
     }
 
 
