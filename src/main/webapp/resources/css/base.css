@@ -25,7 +25,7 @@ input{
     line-height: 20px !important;
     top: 0px;
     transition: all 0.2s;
-    z-index: 99999;
+    z-index: 100;
 }
 #customer-action{
     float: left;
@@ -681,9 +681,11 @@ a{
 }
 
 .QLTK{
-    width:100%;
+    width:40%;
     min-height:300px;
     background:#DDDDDD;
+    padding: 1%;
+    margin: auto;
 }
 .personal{
     width:40%;
@@ -698,4 +700,5 @@ a{
     background:#EEEEEE;
     overflow:auto;
 }
+
 
