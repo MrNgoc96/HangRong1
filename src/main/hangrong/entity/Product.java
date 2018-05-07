@@ -1,4 +1,6 @@
-package hangrong.entity;
+package main.hangrong.entity;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -20,6 +22,8 @@ public class Product {
     private int rate;
     private double discount;
     @Column(name = "sale_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date saleDate;
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -47,9 +51,8 @@ public class Product {
         this.rate = rate;
     }
 
-    public String getSaleDate() {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        return format.format(saleDate);
+    public Date getSaleDate() {
+        return saleDate;
     }
 
     public void setSaleDate(Date saleDate) {
@@ -76,8 +79,8 @@ public class Product {
         this.rate = rate;
     }
 
-    public String getId() {
-        return "SP" + id;
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -101,6 +104,9 @@ public class Product {
     }
 
     public String[] getImage() {
+        if(image.equals("")){
+            image = "resources/images/default-img.svg;";
+        }
         return image.split(";");
     }
 

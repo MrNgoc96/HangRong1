@@ -1,4 +1,4 @@
-package hangrong.model;
+package main.hangrong.model;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

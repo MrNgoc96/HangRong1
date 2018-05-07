@@ -1,5 +1,7 @@
-package hangrong.entity;
+package main.hangrong.entity;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
@@ -18,9 +20,11 @@ public class Shop {
     private String name;
     @Column(name = "join_date")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date joinDate;
     private String avatar;
     private String level;
+    private String address;
     @OneToMany(mappedBy = "shop")
     private List<Product> products;
     @OneToMany(mappedBy = "shop")
@@ -29,20 +33,28 @@ public class Shop {
     public Shop() {
     }
 
-    public Shop(String email, String name, String avatar, String level) {
+    public Shop(String email, String name, String avatar,String level,String address) {
         this.email = email;
         this.name = name;
         this.avatar = avatar;
         this.level = level;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public ArrayList<Order> getOrders() {
         return new ArrayList<Order>(orders);
     }
 
-    public String getJoinDate() {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        return format.format(joinDate);
+    public Date getJoinDate() {
+        return joinDate;
     }
 
     public void setJoinDate(Date joinDate) {

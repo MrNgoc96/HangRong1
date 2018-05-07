@@ -1,7 +1,7 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.Category;
-import hangrong.entity.Product;
+import main.hangrong.entity.Category;
+import main.hangrong.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -14,6 +14,7 @@ import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -24,10 +25,12 @@ public class ProductDAO {
     SessionFactory sessionFactory;
     @Autowired
     CrudRepository cr;
+    @Autowired
+    ServletContext context;
 
     public ArrayList<Product> getAllProduct(int page, int size) {
         int firstResult = (page - 1) * size;
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         Query<Product> query = session.createQuery("SELECT p FROM Product p");
         query.setFirstResult(firstResult);
         query.setMaxResults(size);
@@ -40,27 +43,50 @@ public class ProductDAO {
         return (ArrayList<Category>) query.list();
     }
 
-    public String uploadImage(String productId, MultipartFile[] files, ServletContext context) {
-        String imageLink = "";
-        for (MultipartFile file : files) {
-            String path = context.getRealPath("resources/images") + "/" + productId + "_" + file.getOriginalFilename();
-            try {
-                file.transferTo(new File(path));
-            } catch (IOException e) {
-                e.printStackTrace();
+    public String uploadImage(String imageLink, int productId, List<MultipartFile> files) {
+        if (files.size() > 0) {
+            for (MultipartFile file : files) {
+                if (!file.isEmpty()) {
+                    String path = context.getRealPath("resources/images") + "/SP" + productId + "_" + file.getOriginalFilename();
+                    try {
+                        file.transferTo(new File(path));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    imageLink += "resources/images/SP" + productId + "_" + file.getOriginalFilename() + ";";
+                }
             }
-            imageLink += "resources/images/" + productId + "_" + file.getOriginalFilename() + ";";
         }
         return imageLink;
     }
 
-    public void removeProductImage(String[] productImgLinks, ServletContext context) {
-        for (String imgPath : productImgLinks) {
-            String path = context.getRealPath(imgPath);
+    public String removeImageLink(String removeImgIndex, String[] productImageLink) {
+        String[] indexs = removeImgIndex.split(";");
+        ArrayList<String> list =  new ArrayList<>(Arrays.asList(productImageLink));
+        if (!indexs[0].equals("")) {
+            for(String index : indexs ){
+                int i = Integer.parseInt(index);
+                removeImage(list.get(i));
+                list.remove(i);
+            }
+        }
+        StringBuilder imagelink = new StringBuilder();
+        for (String productImg : list) {
+            if (!productImg.equals("")&&!productImg.equals("resources/images/default-img.svg")) {
+                imagelink.append(productImg + ";");
+            }
+        }
+        return imagelink.toString();
+    }
+
+    public void removeImage(String imgLink) {
+        if (!imgLink.equals("")&&!imgLink.equals("resources/images/default-img.svg")&&imgLink.startsWith("resources/images/")) {
+            String path = context.getRealPath(imgLink);
             File file = new File(path);
             file.delete();
         }
     }
+
 
     public Category getCategory(String categoryId) {
         Session session = sessionFactory.getCurrentSession();
@@ -69,7 +95,7 @@ public class ProductDAO {
 
     public ArrayList<Product> getFeatureProducts(int page, int size) {
         int firstResult = (page - 1) * size;
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.openSession();
         String hql = "SELECT p FROM Product p ORDER BY p.rate desc";
         Query<Product> query = session.createQuery(hql);
         query.setFirstResult(firstResult);
@@ -83,14 +109,14 @@ public class ProductDAO {
         return session.get(Product.class, id);
     }
 
-    public String saveProduct(Product product) {
+    public int saveProduct(Product product) {
         Session session = sessionFactory.getCurrentSession();
         try {
             session.save(product);
             return product.getId();
         } catch (Exception e) {
             e.printStackTrace();
-            return "";
+            return -1;
         }
     }
 
@@ -123,6 +149,28 @@ public class ProductDAO {
         return (ArrayList<Product>) query.list();
     }
 
+    public ArrayList<Product> searchProductOfShop(String key,int shopId, int page, int size) {
+        Session session = sessionFactory.getCurrentSession();
+        int firstResult = (page - 1) * size;
+        String hql = "SELECT p FROM Product p inner join p.shop s WHERE p.name like :productName and s.id = :shopId";
+        Query<Product> query  = session.createQuery(hql);
+        query.setParameter("productName", "%" + key + "%");
+        query.setParameter("shopId",shopId);
+        query.setFirstResult(firstResult);
+        query.setMaxResults(size);
+        return (ArrayList<Product>) query.list();
+    }
+
+    public int countSearchProductOfShop(String key,int shopId){
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "SELECT count(p) FROM Product p inner join p.shop s WHERE p.name like :productName and s.id = :shopId";
+        Query<Long> query = session.createQuery(hql);
+        query.setParameter("productName","%"+key+"%");
+        query.setParameter("shopId", shopId);
+        return (int) (long) query.getSingleResult();
+    }
+
+
     public boolean isProductofShop(String productId, int shopId) {
         int id = getRealProductId(productId);
         Session session = sessionFactory.getCurrentSession();
@@ -151,6 +199,8 @@ public class ProductDAO {
         query.setParameter("shopId", shopId);
         return (int) (long) query.getSingleResult();
     }
+
+
 
     public int countTotalProductOfShop(int shopId) {
         Session session = sessionFactory.getCurrentSession();

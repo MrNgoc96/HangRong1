@@ -1,9 +1,8 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.Order;
-import hangrong.entity.OrderDetail;
-import hangrong.entity.Product;
-import hangrong.entity.Shop;
+import main.hangrong.entity.Order;
+import main.hangrong.entity.OrderDetail;
+import main.hangrong.entity.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +10,12 @@ import java.util.HashMap;
 public class CartBean extends HashMap<String, ProductPTO> {
 
     public void addProduct(ProductPTO product) {
-        String key = product.getProduct().getId();
+        String key = "SP"+product.getProduct().getId();
         if (containsKey(key)) {
             int oldQuantity = get(key).getQuantity();
             this.get(key).setQuantity(oldQuantity + 1);
         } else {
-            put(product.getProduct().getId(), product);
+            put(key, product);
         }
     }
 

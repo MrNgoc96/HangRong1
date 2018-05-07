@@ -1,6 +1,6 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.Customer;
+import main.hangrong.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -19,12 +19,25 @@ public class CustomerDAO {
     @Autowired
     CrudRepository cr;
 
-    public ArrayList<Customer> getCustomers(int firstResult,int size) {
+    public ArrayList<Customer> getCustomers(int firstResult, int size) {
         Session session = sessionFactory.getCurrentSession();
         Query<Customer> query = session.createQuery("FROM Customer");
         query.setFirstResult(firstResult);
         query.setMaxResults(size);
         return (ArrayList<Customer>) query.list();
+    }
+
+    public boolean hasCustomerWithEmail(String email){
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            String hql = "SELECT c FROM Customer c Where c.email = :email";
+            Query<Customer> query = session.createQuery(hql);
+            query.setParameter("email", email);
+            return query.list().size() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

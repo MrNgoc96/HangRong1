@@ -1,4 +1,4 @@
-package hangrong.model;
+package main.hangrong.model;
 
 import org.springframework.stereotype.Service;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;

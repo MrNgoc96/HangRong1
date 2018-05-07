@@ -1,9 +1,9 @@
-package hangrong.controller;
+package main.hangrong.controller;
 
-import hangrong.entity.Category;
-import hangrong.entity.Product;
-import hangrong.entity.Shop;
-import hangrong.model.ProductDAO;
+import main.hangrong.entity.Category;
+import main.hangrong.entity.Product;
+import main.hangrong.entity.Shop;
+import main.hangrong.model.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +23,7 @@ public class ProductController {
     private final String PRODUCTS_VIEW_NAME = "client-views/products";
 
     // Hiển thị chi tiết sản phẩm
-    @GetMapping("/products")
+    @GetMapping(value="/products",params = "productId")
     public String showProductDetail(@RequestParam String productId, Model model){
         Product product = productDAO.getProduct(productId);
         Shop shop = product.getShop();
@@ -33,6 +33,31 @@ public class ProductController {
         model.addAttribute("relatedProducts",relatedProducts);
         model.addAttribute("shop",shop);
         return PRODUCT_DETAIL_VIEW_NAME;
+    }
+
+    @GetMapping(value="/products",params = "categoryId")
+    public String showProducts(@RequestParam String categoryId,@RequestParam(defaultValue = "1") int page,Model model){
+        ArrayList<Product> products = productDAO.searchProduct("%",categoryId,page, PAGE_SIZE);
+        int totalResults = productDAO.countSearchResults("%",categoryId);
+        int totalPages = productDAO.getTotalPages(totalResults, PAGE_SIZE);
+        model.addAttribute("products",products);
+        model.addAttribute("totalResults",totalResults);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("categoryId",categoryId);
+        model.addAttribute("totalPages",totalPages);
+        return PRODUCTS_VIEW_NAME;
+    }
+    @GetMapping(value="/products",params = "shopId")
+    public String showProductsOfShop(@RequestParam int shopId,@RequestParam(defaultValue = "1") int page,Model model){
+        ArrayList<Product> products = productDAO.getProductsOfShop(shopId,page,PAGE_SIZE);
+        int totalResults = productDAO.countTotalProductOfShop(shopId);
+        int totalPages = productDAO.getTotalPages(totalResults, PAGE_SIZE);
+        model.addAttribute("products",products);
+        model.addAttribute("totalResults",totalResults);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("shopId",shopId);
+        model.addAttribute("totalPages",totalPages);
+        return PRODUCTS_VIEW_NAME;
     }
 
     // Tìm kiếm sản phẩm
@@ -47,6 +72,7 @@ public class ProductController {
         model.addAttribute("key",key);
         model.addAttribute("categoryId",categoryId);
         model.addAttribute("totalPages",totalPages);
+        model.addAttribute("isSearch",true);
         return PRODUCTS_VIEW_NAME;
     }
 

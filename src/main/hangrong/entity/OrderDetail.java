@@ -1,4 +1,4 @@
-package hangrong.entity;
+package main.hangrong.entity;
 
 import javax.persistence.*;
 

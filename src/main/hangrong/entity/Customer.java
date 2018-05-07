@@ -1,8 +1,10 @@
-package hangrong.entity;
+package main.hangrong.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,23 +25,20 @@ public class Customer {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth;
     private String address;
-    private String avatar;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",orphanRemoval = true)
     private List<Order> orders;
 
     public Customer() {
         // TODO Auto-generated constructor stub
     }
 
-    public Customer(String email, String name, String gender, String phone, Date dateOfBirth, String address,
-                    String avatar) {
+    public Customer(String email, String name, String gender, String phone, Date dateOfBirth, String address) {
         this.email = email;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
-        this.avatar = avatar;
     }
 
 
@@ -107,12 +106,5 @@ public class Customer {
         this.address = address;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
 
 }

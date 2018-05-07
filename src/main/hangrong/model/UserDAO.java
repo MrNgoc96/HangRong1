@@ -1,6 +1,6 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.User;
+import main.hangrong.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

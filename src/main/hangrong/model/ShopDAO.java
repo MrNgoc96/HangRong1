@@ -1,13 +1,17 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.Shop;
+import main.hangrong.entity.Shop;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Repository
@@ -18,6 +22,23 @@ public class ShopDAO {
     SessionFactory sessionFactory;
     @Autowired
     CrudRepository cr;
+    @Autowired
+    ServletContext context;
+
+
+    public String uploadAvatar(MultipartFile image,Shop shop){
+        String imageLink = "";
+        if(!image.isEmpty()){
+            String path = context.getRealPath("resources/images") + "/shop_" + shop.getId() + "_" + image.getOriginalFilename();
+            try {
+                image.transferTo(new File(path));
+                imageLink += "resources/images/shop_" + shop.getId() + "_" + image.getOriginalFilename();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return imageLink;
+    }
 
     public ArrayList<Shop> getShops(int page, int size) {
         int firstResult = (page - 1) * size;

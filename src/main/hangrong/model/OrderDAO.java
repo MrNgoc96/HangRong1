@@ -1,7 +1,7 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.Order;
-import hangrong.entity.OrderDetail;
+import main.hangrong.entity.Order;
+import main.hangrong.entity.OrderDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

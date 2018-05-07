@@ -1,6 +1,6 @@
-package hangrong.model;
+package main.hangrong.model;
 
-import hangrong.entity.Product;
+import main.hangrong.entity.Product;
 
 public class ProductPTO {
 
