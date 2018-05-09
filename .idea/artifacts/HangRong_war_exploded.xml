@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="HangRong:war exploded">
-    <output-path>$PROJECT_DIR$/target/hangrong</output-path>
+    <output-path>$PROJECT_DIR$/target/HangRong</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -18,7 +18,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:5.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4.7" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
           <element id="library" level="project" name="Maven: net.sourceforge.jtds:jtds:1.3.1" />
@@ -46,7 +49,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/hangrong/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/HangRong/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="HangRong/web/Web" />
     </root>
