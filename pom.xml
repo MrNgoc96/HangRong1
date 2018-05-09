@@ -69,7 +69,6 @@
     </dependencies>
     <build>
         <finalName>HangRong</finalName>
-        <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -86,31 +85,9 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.0.0</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-    <!--<profiles>-->
-        <!--<profile>-->
-            <!--<id>openshift</id>-->
-            <!--<build>-->
-                <!--<finalName>TrunkSchedule</finalName>-->
-                <!--<plugins>-->
-                    <!--<plugin>-->
-                        <!--<artifactId>maven-war-plugin</artifactId>-->
-                        <!--<version>3.0.0</version>-->
-                        <!--<configuration>-->
-                            <!--<encoding>${project.build.sourceEncoding}</encoding>-->
-                            <!--<outputDirectory>deployments</outputDirectory>-->
-                            <!--<warName>ROOT</warName>-->
-                        <!--</configuration>-->
-                    <!--</plugin>-->
-                <!--</plugins>-->
-            <!--</build>-->
-        <!--</profile>-->
-    <!--</profiles>-->
 </project>
 
 
