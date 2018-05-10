@@ -31,7 +31,7 @@ public class HomeController {
     protected String showHomePage (Model model, HttpSession session) {
 
         ArrayList<Product> newProducts = productDAO.getAllProduct(1,SIZE);
-        ArrayList<Product> featureProducts = productDAO.getFeatureProducts(1,SIZE);
+        ArrayList<Product> featureProducts = productDAO.getFeatureProducts(1,6);
         model.addAttribute("newProducts", newProducts);
         model.addAttribute("featureProducts", featureProducts);
         return "index";

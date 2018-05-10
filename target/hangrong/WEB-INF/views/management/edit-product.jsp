@@ -18,20 +18,46 @@
         <div class="row">
             <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="panel-body" id="form-product">
-                    <form:form action="shop-management.html?editProduct" modelAttribute="product" method="post">
-                        <input type="hidden" value="${product.id}" name="id">
+                    <form action="shop-management.html?editProduct"  method="post" enctype="multipart/form-data">
+                        <input name="productId" type="hidden" value="${product.id}" />
+                        <div id="pro-images" class="row">
+                            <c:forEach items="${product.image}" var="image" varStatus="i">
+                                <div style="position: relative;" class="img-rmv image col-md-4">
+                                    <input type="hidden" value="${i.index}" class="img-path">
+                                    <img src="${image}" width="90%" height="90%"
+                                         class="img-thumbnail img-rounded img-responsive ">
+                                    <c:if test="${image != 'resources/images/default-img.svg'}">
+                                        <button type="button" class="btn-danger img-remove"
+                                                style="border-radius: 50%;top: 1%;right: 1%;position: absolute;">x
+                                        </button>
+                                    </c:if>
+                                </div>
+                            </c:forEach>
+                            <input type="hidden" id="remove-images" name="removeImgIndex">
+                            <c:forEach begin="${fn:length(product.image)}" end="5" varStatus="i">
+                                <div style="position: relative;" class="image col-md-4">
+                                    <img style="z-index: 10;" src="http://mfmhyattsville1.org/Images/Dock/ImageUp.png"
+                                         width="80%" class="img-thumbnail  img-rounded img-responsive ">
+                                    <input class="product-image" name="file"
+                                           style="position: absolute;top:0;left: 0;opacity: 0;width: 100%;height: 100%;cursor: pointer"
+                                           type="file"
+                                           accept=".jpg,.png,.jpeg">
+                                </div>
+                            </c:forEach>
+                        </div>
+                        <br>
                         <label>Tên sản phẩm</label>
-                        <form:input path="name" class="form-control" id="product-name"/>
+                        <input name="name" class="form-control" value="${product.name}" id="product-name"/>
                         <div class="input-error" id="error-name">Bạn phải nhập tên cho sản phẩm !</div>
                         <br>
                         <label>Giá sản phẩm</label>
-                        <form:input path="price" class="form-control" id="product-price"/>
+                        <input name="price" value="${product.price}" class="form-control" id="product-price"/>
                         <div class="input-error" id="error-price">Bạn phải nhập giá sản phẩm chính xác ( là số và lớn
                             hơn 0 )!
                         </div>
                         <br>
                         <label>Giới thiệu sản phẩm</label>
-                        <form:textarea path="intro" class="form-control" id="product-intro"/>
+                        <textarea name="intro" class="form-control" id="product-intro">${product.intro}</textarea>
                         <div class="input-error" id="error-intro">Bạn phải giới thiệu cho sản phẩm này !</div>
                         <br>
                         <label>Giảm giá (%)</label>
@@ -49,7 +75,7 @@
                         <button class="btn btn-lg btn-success" style="margin-left: 35%"><i class="fa fa-save"></i> Cập
                             nhật
                         </button>
-                    </form:form>
+                    </form>
                 </div>
                 <div class="modal" id="details" style="width: 50%;margin: auto;">
                     <div class="modal-header text-center"><h2 style="color: white">Chi tiết sản phẩm</h2></div>
@@ -97,13 +123,8 @@
     </div>
 </div>
 <c:if test="${updateSucceed != null}">
-    <span class="hidden" id="title"><s:message code="shop-management.product.popup-title"/></span>
-    <span class="hidden" id="message"><s:message code="shop-management.product.updateSucceed"
-                                                 arguments="${updateSucceed}"/></span>
     <script>
-        let title = $('#title').html();
-        let msg = $('#message').html();
-        showPopup(title, msg);
+        showPopup("Thông báo", "Cập nhật thành công sản phẩm <b>${updateSucceed}</b> !");
     </script>
 </c:if>
 <!-- /. PAGE INNER  -->

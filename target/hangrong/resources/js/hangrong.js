@@ -58,7 +58,7 @@ function onSignIn(googleUser) {
 
 // Đăng xuất
 function signOut() {
-    window.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/hangrong/log-out.html";
+    window.location.href = "../../../hangrong/log-out.html";
 };
 
 // Thêm sản phẩm vào giỏ hàng
@@ -120,7 +120,7 @@ function login() {
                 let allData = $('<div />').html(data);
                 let error = allData.find('#login_error');
                 if (error.val() == "") {
-                    $('#login-form').submit();
+                    window.location.href = "./login.html";
                 } else {
                     let login = allData.find('#form-login');
                     $('#form-login').replaceWith(login);
@@ -138,4 +138,9 @@ function viewOrder(orderId) {
         let orderDetails = allData.find("#orderDetails");
         $('#orderDetails').replaceWith(orderDetails);
     },'html')
+}
+
+function cancelOrder(orderId) {
+    let url = "./cancel-order.html?orderId="+orderId;
+    Confirm('Hủy đặt hàng','Bạn thực sự muốn hủy đơn hàng DH'+orderId+' ?','Yes','No',url);
 }

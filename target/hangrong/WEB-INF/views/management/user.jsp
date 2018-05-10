@@ -8,8 +8,7 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h2 style="text-align: center;font-weight: bold">Sản phẩm trong cửa
-                    hàng ${sessionScope.currentUser.name}</h2>
+                <h2 style="text-align: center;font-weight: bold">Quản lý tài khoản</h2>
             </div>
         </div>
         <hr>
@@ -29,7 +28,20 @@
                 <div class="panel panel-default"
                      style="width:1200px; max-height:600px; margin-bottom:30px;">
                     <div class="panel-heading">
-                        Có tất cả ${totalProducts} sản phẩm trong cửa hàng
+                        <ul class="nav nav-pills">
+                            <li class="${orderStatus==1?'active':''}"><a
+                                    href="shop-management.html?managementOrders&orderStatus=1" class="tab">Đang đặt
+                                hàng <span class="badge">${status1}</span></a></li>
+                            <li class="${orderStatus==2?'active':''}"><a
+                                    href="shop-management.html?managementOrders&orderStatus=2" class="tab">Đang giao
+                                hàng <span class="badge">${status2}</span></a></li>
+                            <li class="${orderStatus==3?'active':''}"><a
+                                    href="shop-management.html?managementOrders&orderStatus=3" class="tab">Đã nhận
+                                hàng <span class="badge">${status3}</span></a></li>
+                            <li class="${orderStatus==4?'active':''}"><a
+                                    href="shop-management.html?managementOrders&orderStatus=4" class="tab">Yêu cầu hủy
+                                đặt hàng <span class="badge">${status4}</span></a></li>
+                        </ul>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -37,7 +49,7 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th style="text-align: center;">Hình ảnh</th>
+                                    <th style="text-align: center;">Email</th>
                                     <th style="text-align: center;">Tên sản phẩm</th>
                                     <th style="text-align: center;">Giá</th>
                                     <th style="text-align: center;">Trạng Thái</th>
@@ -47,7 +59,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${products}" var="product" varStatus="i">
+                                <c:forEach items="${shop}" var="product" varStatus="i">
                                     <tr style="text-align: center;">
                                         <td>${i.index + 1}</td>
                                         <td width="200px"><img src="${product.image[0]}" width="50%"></td>

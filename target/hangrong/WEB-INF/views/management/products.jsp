@@ -14,14 +14,9 @@
         </div>
         <hr>
         <div class="searchform">
-            <form class="navbar-form" role="search" style="margin:0 50% 2% 0;">
-                <select name="categoryId" class="form-control">
-                    <c:forEach items="${categories}" var="category">
-                        <option value="${category.id}">${category.name}</option>
-                    </c:forEach>
-                </select>
-                <input type="text" class="form-control" placeholder="Tìm kiếm">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Tìm kiếm</button>
+            <form action="shop-management.html?search-product" method="post" class="navbar-form" style="margin:0 50% 2% 0;">
+                <input name="key" type="text" class="form-control" placeholder="Tìm kiếm">
+                <button class="btn btn-default"><i class="fa fa-search"></i> Tìm kiếm</button>
             </form>
         </div>
         <div class="row">
@@ -29,7 +24,12 @@
                 <div class="panel panel-default"
                      style="width:1200px; max-height:600px; margin-bottom:30px;">
                     <div class="panel-heading">
-                        Có tất cả ${totalProducts} sản phẩm trong cửa hàng
+                        <c:if test="${isSearch}">
+                            Tìm thấy <b>${totalProducts}</b> sản phẩm với từ khóa <b>'${key}'</b>
+                        </c:if>
+                        <c:if test="${!isSearch}">
+                            Có tất cả ${totalProducts} sản phẩm trong cửa hàng
+                        </c:if>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -52,7 +52,7 @@
                                         <td>${i.index + 1}</td>
                                         <td width="200px"><img src="${product.image[0]}" width="50%"></td>
                                         <td>${product.name}</td>
-                                        <td style="width: 100px;">${product.price} $</td>
+                                        <td style="width: 100px;">$${product.price}</td>
                                         <td>${product.status==true?'Còn hàng':'Hết hàng'}</td>
                                         <td>${product.category.name}</td>
                                         <td>${product.saleDate}</td>
@@ -81,22 +81,42 @@
 
                         </div>
                         <ul class="pagination" style="margin-left: 40%;">
-                            <li>
-                                <a href="${currentPage > 1 ? 'shop-management.html?page='+=(currentPage - 1) : '#'} "
-                                   aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <c:forEach var="index" begin="1" end="${totalPages}">
-                                <li class="${currentPage == index?'active':''}"><a
-                                        href="shop-management.html?page=${index}">${index}</a></li>
-                            </c:forEach>
-                            <li>
-                                <a href="${currentPage < totalPages ? 'shop-management.html?page='+=(currentPage + 1) : '#'}"
-                                   aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+                            <c:if test="${!isSearch}">
+                                <li>
+                                    <a href="${currentPage > 1 ? 'shop-management.html?page='+=(currentPage - 1) : '#'} "
+                                       aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <c:forEach var="index" begin="1" end="${totalPages}">
+                                    <li class="${currentPage == index?'active':''}"><a
+                                            href="shop-management.html?page=${index}">${index}</a></li>
+                                </c:forEach>
+                                <li>
+                                    <a href="${currentPage < totalPages ? 'shop-management.html?page='+=(currentPage + 1) : '#'}"
+                                       aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </c:if>
+                            <c:if test="${isSearch}">
+                                <li>
+                                    <a href="${currentPage > 1 ? 'shop-management.html?key='+key+'page='+=(currentPage - 1) : '#'} "
+                                       aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <c:forEach var="index" begin="1" end="${totalPages}">
+                                    <li class="${currentPage == index?'active':''}"><a
+                                            href="shop-management.html?key=${key}&page=${index}">${index}</a></li>
+                                </c:forEach>
+                                <li>
+                                    <a href="${currentPage < totalPages ? 'shop-management.html?key='+key+'page='+=(currentPage + 1) : '#'}"
+                                       aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </c:if>
                         </ul>
                     </div>
                 </div>
@@ -104,13 +124,18 @@
         </div>
     </div>
     <c:if test="${deleteSucceed != null}">
-        <span class="hidden" id="title"><s:message code="shop-management.product.popup-title"/></span>
-        <span class="hidden" id="message"><s:message code="shop-management.product.deleteSucceed"
-                                                     arguments="${deleteSucceed}"/></span>
         <script>
-            let title = $('#title').text();
-            let msg = $('#message').text()
-            showPopup(title, msg);
+            showPopup("Thông báo", "Xoá thành công sản phẩm <b>${deleteSucceed}</b> !");
+        </script>
+    </c:if>
+    <c:if test="${editInfoSucceed}">
+        <script>
+            showPopup("Thông báo", "Cập nhật thông tin thành công !");
+        </script>
+    </c:if>
+    <c:if test="${changePassSucceed}">
+        <script>
+            showPopup("Thông báo", "Thay đổi mật khẩu thành công !");
         </script>
     </c:if>
 </div>

@@ -23,15 +23,6 @@
             </script>
         </c:if>
         <hr>
-        <div class="searchform">
-            <form class="navbar-form" role="search" style="margin:0 50% 2% 0;">
-                <select name="categoryId" class="form-control">
-
-                </select>
-                <input type="text" class="form-control" placeholder="Tìm kiếm">
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i> Tìm kiếm</button>
-            </form>
-        </div>
         <div class="row">
             <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="panel panel-default"
@@ -68,23 +59,26 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${orders}" var="order" varStatus="i">
-                                        <tr style="text-align: center;">
-                                            <td>DH${order.id}</td>
-                                            <td>${order.customer.name}</td>
-                                            <td>${order.customer.email}</td>
-                                            <td>${order.address} </td>
-                                            <td>${order.orderDate}</td>
-                                            <td>${order.totalPrice}$</td>
-                                            <td>
-                                                <c:if test="${orderStatus<3}">
-                                                    <a class="btn btn-success" onclick="updateOrderStatus('${order.id}','${orderStatus}')"><i class="fa fa-level-up"></i></a>
-                                                </c:if>
-                                                <a class="btn btn-danger" onclick="deleteOrder('${order.id}')"><i class="fa fa-trash-o"></i></a>
-                                                <a class="btn btn-primary" data-toggle="modal"
-                                                   data-target="#orderDetail" onclick="viewOrder('${order.id}')"><i
-                                                        class="fa fa-search-plus"></i></a>
-                                            </td>
-                                        </tr>
+                                    <tr style="text-align: center;">
+                                        <td>DH${order.id}</td>
+                                        <td>${order.customer.name}</td>
+                                        <td>${order.customer.email}</td>
+                                        <td>${order.address} </td>
+                                        <td>${order.orderDate}</td>
+                                        <td>${order.totalPrice}$</td>
+                                        <td>
+                                            <c:if test="${orderStatus<3}">
+                                                <a class="btn btn-success"
+                                                   onclick="updateOrderStatus('${order.id}','${orderStatus}')"><i
+                                                        class="fa fa-level-up"></i></a>
+                                            </c:if>
+                                            <a class="btn btn-danger" onclick="deleteOrder('${order.id}')"><i
+                                                    class="fa fa-trash-o"></i></a>
+                                            <a class="btn btn-primary" data-toggle="modal"
+                                               data-target="#orderDetail" onclick="viewOrder('${order.id}')"><i
+                                                    class="fa fa-search-plus"></i></a>
+                                        </td>
+                                    </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
@@ -117,7 +111,8 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng ${orderDetails[0].order.status}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn
+                        hàng ${orderDetails[0].order.status}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -162,11 +157,12 @@
                                                          arguments="${deleteSucceed}"/></span>
             <script>
                 let title = $('#title').text();
-                let msg = $('#message').text()
+                let msg = $('#message').text();
                 showPopup(title, msg);
             </script>
         </c:if>
     </div>
+</div>
 </body>
 </html>
 

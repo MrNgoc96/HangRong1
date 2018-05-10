@@ -24,7 +24,7 @@
                     <li class="active"><s:message code="cart.shoppingCart"/></li>
                 </ul>
                 <c:set var="cartBean" value="${sessionScope.cartBean}"/>
-                <h3><s:message code="cart.cartHasProducts" arguments="${fn:length(cartBean)}"/> <a
+                <h3><s:message code="cart.has" arguments="${fn:length(cartBean)}"/> <a
                         href="home.html" class="btn btn-large pull-right"><i
                         class="fa fa-arrow-left"></i> <s:message code="cart.continueShoping"/></a></h3>
                 <hr class="soft"/>
@@ -66,9 +66,8 @@
                             <td>$${item.value.product.newPrice * item.value.quantity}</td>
                         </tr>
                     </c:forEach>
-                    <tr></tr>
                     <tr>
-                        <td style="text-align:right"><strong>TOTAL :</strong></td>
+                        <td colspan="5" style="text-align:right"><strong>TOTAL :</strong></td>
                         <td class="label label-important" style="display:block"><strong>
                             $${totalPrice} </strong></td>
                     </tr>

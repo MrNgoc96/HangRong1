@@ -1,4 +1,22 @@
 $(document).ready(function () {
+    $('#shop-avatar').change(function () {
+        let input = this;
+        let url = $(this).val();
+        let ext = url.substring(url.lastIndexOf('.') + 1)
+            .toLowerCase();
+        if (input.files
+            && (ext == "gif" || ext == "png"
+                || ext == "jpeg" || ext == "jpg")) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                $('#avatar-shop').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+
+
+    $('#remove-images').val("");
     $('#product-images').change(function () {
         let input = this;
         let url = $(this).val();
@@ -18,6 +36,8 @@ $(document).ready(function () {
                 }
         }
     });
+    removeImgEvent();
+    addImgEvent();
     loadEventRemoveProduct();
     getProductDetails();
     loadChangeProductForm();
@@ -25,8 +45,53 @@ $(document).ready(function () {
 });
 
 function signOut() {
-    window.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/hangrong/log-out.html";
+    window.location.href = "../../../hangrong/log-out.html";
 };
+
+function removeImgEvent() {
+    $('.img-remove').click(function () {
+        let removeImage = $('#remove-images').val();
+        let imageIndex = $(this).prev().prev().val();
+        let replace = '<img style="z-index: 10;" src="http://mfmhyattsville1.org/Images/Dock/ImageUp.png" width="80%" class="img-thumbnail  img-rounded img-responsive ">\n' +
+            '                                    <input class="product-image" style="position: absolute;top:0;left: 0;opacity: 0;width: 100%;height: 100%;cursor: pointer" type="file" name="image"\n' +
+            '                                           accept=".jpg,.png,.jpeg" >';
+        $(this).prev().remove();
+        $(this).parent().append(replace);
+        $(this).remove();
+        addImgEvent();
+        if (imageIndex != undefined) {
+            imageIndex += ";"
+            $('#remove-images').val(removeImage + imageIndex);
+        }
+
+    });
+}
+
+function addImgEvent() {
+    $('.product-image').change(function () {
+        let input = this;
+        let url = $(this).val();
+        let ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        let result = '';
+        if (input.files && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                result += reader.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+            alert("Upload ảnh thành công !");
+            $(this).prev().remove();
+            $(this).parent().append('<img src="' + result + '" width="90%" height="90%"\n' +
+                '                                         class="img-thumbnail img-rounded img-responsive ">\n' +
+                '                                    <button type="button" class="btn-danger img-remove"\n' +
+                '                                            style="border-radius: 50%;top: 1%;right: 1%;position: absolute;">x\n' +
+                '                                    </button>');
+
+            removeImgEvent();
+        }
+    });
+}
+
 
 function getProductDetails() {
     let details = '';
@@ -135,6 +200,36 @@ function loadChangeProductForm() {
             $('#error-detail').hide();
         }
     });
+    $('#older-pass').change(function () {
+        if ($(this).val() == "") {
+            $(this).css({border: '2px solid red'});
+            $('#error-older-pass').show();
+        } else {
+            $(this).css({border: ''});
+            $('#error-older-pass').hide();
+        }
+    });
+    $('#new-pass').change(function () {
+        let newpass = $(this).val();
+        if (newpass == "" || newpass.length <= 5) {
+            $(this).css({border: '2px solid red'});
+            $('#error-new-pass').show();
+        } else {
+            $(this).css({border: ''});
+            $('#error-new-pass').hide();
+        }
+    });
+    $('#re-pass').change(function () {
+        let newpass = $('#new-pass').val();
+        let repass = $(this).val();
+        if (newpass != repass) {
+            $(this).css({border: '2px solid red'});
+            $('#error-re-pass').show();
+        } else {
+            $(this).css({border: ''});
+            $('#error-re-pass').hide();
+        }
+    });
 }
 
 function validateProductForm() {
@@ -186,4 +281,35 @@ function deleteProduct(productId) {
     let no = $('#del-product-confirm-no').html();
     let link = './shop-management.html?removeProduct&productId=' + productId;
     Confirm(title, msg, yes, no, link);
+}
+
+function changePassword() {
+    $('#wrong-pass').hide();
+    let orderPass = $('#older-pass').val();
+    let newPass = $('#new-pass').val();
+    let rePass = $('#re-pass').val();
+    if (orderPass == "") {
+        $('#older-pass').css({border: '2px solid red'});
+        $('#error-older-pass').show();
+    } else if (newPass == "" || newPass.length <= 5) {
+        $('#new-pass').css({border: '2px solid red'});
+        $('#error-new-pass').show();
+    } else if (newPass != rePass) {
+        $('#re-pass').css({border: '2px solid red'});
+        $('#error-re-pass').show();
+    } else {
+        $('#loading-pass').show();
+        setTimeout(function () {
+            $('#loading-pass').hide();
+            $.post('./shop-management.html?check-password', {olderPass: orderPass, newPass: newPass}).done(function (data) {
+                let allData = $('<div/>').html(data);
+                let error = allData.find('#is-pass-correct');
+                if (error.val() == 'true') {
+                    $('#form-change-pass').submit();
+                } else {
+                    $('#wrong-pass').show();
+                }
+            }, 'html');
+        }, 3000);
+    }
 }

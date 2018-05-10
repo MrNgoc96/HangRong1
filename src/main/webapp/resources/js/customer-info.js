@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#datepicker').datepicker();
-    $('#register-form').submit(function () {
+    $('#customer-info-form').submit(function () {
         let acong = $('#email').val().indexOf('@');
         let dot = $('#email').val().lastIndexOf('.');
         let phone = $('#phone').val();
@@ -32,11 +32,42 @@ $(document).ready(function () {
             return false;
         }
     });
-    loadChangeRegisterForm();
+    loadChangeForm();
 });
 
+function changePassword() {
+    $('#wrong-pass').hide();
+    let orderPass = $('#older-pass').val();
+    let newPass = $('#new-pass').val();
+    let rePass = $('#re-pass').val();
+    if (orderPass == "") {
+        $('#older-pass').css({border: '2px solid red'});
+        $('#error-older-pass').show();
+    } else if (newPass == "" || newPass.length <= 5) {
+        $('#new-pass').css({border: '2px solid red'});
+        $('#error-new-pass').show();
+    } else if (newPass != rePass) {
+        $('#re-pass').css({border: '2px solid red'});
+        $('#error-re-pass').show();
+    } else {
+        $('#loading-pass').show();
+        setTimeout(function () {
+            $('#loading-pass').hide();
+            $.post('./check-password.html', {olderPass: orderPass, newPass: newPass}).done(function (data) {
+                let allData = $('<div/>').html(data);
+                let error = allData.find('#is-pass-correct');
+                if (error.val() == 'true') {
+                    $('#form-change-pass').submit();
+                } else {
+                    $('#wrong-pass').show();
+                }
+            }, 'html');
+        }, 3000);
 
-function loadChangeRegisterForm() {
+    }
+}
+
+function loadChangeForm() {
     $('#name').change(function () {
         if ($(this).val() == "") {
             $('#error_name').show();
@@ -77,15 +108,6 @@ function loadChangeRegisterForm() {
             $(this).css({border: ''});
         }
     });
-    $('#register_password').change(function () {
-        if ($(this).val() == "" || $(this).val().length <= 5) {
-            $('#error_password').show();
-            $(this).css({border: '2px solid red'});
-        } else {
-            $('#error_password').hide();
-            $(this).css({border: ''});
-        }
-    });
     $('#address').change(function () {
         if ($(this).val() == "") {
             $('#error_address').show();
@@ -103,6 +125,36 @@ function loadChangeRegisterForm() {
         } else {
             $('#error_phone').hide();
             $(this).css({border: ''});
+        }
+    });
+    $('#older-pass').change(function () {
+        if ($(this).val() == "") {
+            $(this).css({border: '2px solid red'});
+            $('#error-older-pass').show();
+        } else {
+            $(this).css({border: ''});
+            $('#error-older-pass').hide();
+        }
+    });
+    $('#new-pass').change(function () {
+        let newpass = $(this).val();
+        if (newpass == "" || newpass.length <= 5) {
+            $(this).css({border: '2px solid red'});
+            $('#error-new-pass').show();
+        } else {
+            $(this).css({border: ''});
+            $('#error-new-pass').hide();
+        }
+    });
+    $('#re-pass').change(function () {
+        let newpass = $('#new-pass').val();
+        let repass = $(this).val();
+        if (newpass != repass) {
+            $(this).css({border: '2px solid red'});
+            $('#error-re-pass').show();
+        } else {
+            $(this).css({border: ''});
+            $('#error-re-pass').hide();
         }
     });
 

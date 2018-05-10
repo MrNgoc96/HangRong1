@@ -46,22 +46,22 @@
                         <option value="All"><s:message code="home.all"/></option>
                         <option value="TT"><s:message code="home.fashion"/></option>
                         <option value="DGDS"><s:message code="home.supermarketsAndGroceryStores"/></option>
-                        <option value=""><s:message code="home.healthAndBeauty"/></option>
-                        <option><s:message code="home.sportAndTourism"/></option>
-                        <option><s:message code="home.bookAndEntertainment"/></option>
+                        <option value="TBDT"><s:message code="home.electronics"/></option>
+                        <option value="TTDL"><s:message code="home.sportAndTourism"/></option>
+                        <option value="SGT"><s:message code="home.bookAndEntertainment"/></option>
                     </select>
                     <button type="submit" id="submitButton" class="btn btn-primary"><s:message
                             code="home.search"/></button>
                 </form>
                 <ul id="topMenu" class="nav pull-right" style="width: 48%">
                     <li>
-                        <a href="special_offer.html"><s:message code="home.sale"/></a>
+                        <a href="#"><s:message code="home.sale"/></a>
                     </li>
                     <li>
-                        <a href="contact.html"><s:message code="home.registeredSales"/></a>
+                        <a href="register-sale.html"><s:message code="home.registeredSales"/></a>
                     </li>
                     <li>
-                        <a href="normal.html"><s:message code="home.changeLanguage"/></a>
+                        <a href="#"><s:message code="home.changeLanguage"/></a>
                         <c:set var="queryString" value="${pageContext.request.queryString}"></c:set>
                         <ul class="sub-menu1">
                             <li>
@@ -89,9 +89,9 @@
                                 code="home.login"/></span>
                         </a>
                     </c:if>
-                    <c:if test="${sessionScope.userRole=='Customer'}">
+                    <c:if test="${sessionScope.currentUser != null}">
                         <div id="customer-action">
-                            <a><img src="${sessionScope.currentUser.avatar != '' ? sessionScope.currentUser.avatar : 'https://2lvyko39307c3lxh9sd6iu2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/07/grow-loyalty-icon-800x800.png'}"
+                            <a><img src="https://2lvyko39307c3lxh9sd6iu2e-wpengine.netdna-ssl.com/wp-content/uploads/2014/07/grow-loyalty-icon-800x800.png"
                                  width="50%" class="img-circle" style="margin-top: 10%;border: white"></a>
                                 <ul id="submenu">
                                     <li><a href="personal-information.html"><i class="fa fa-user-circle"></i> ${sessionScope.currentUser.name}</a>

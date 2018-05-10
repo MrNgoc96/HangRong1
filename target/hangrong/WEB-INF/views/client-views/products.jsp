@@ -20,45 +20,96 @@
             <jsp:include page="../common/sitebar.jsp"/>
             <div class="span9">
                 <ul class="breadcrumb">
-                    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-                    <li class="active">Products Name</li>
+                    <li><a href="index.html"><s:message code="productDetail.Home" /></a> <span class="divider">/</span></li>
+                    <c:if test="${isSearch}">
+                        <li class="active"><s:message code="products.search" /> </li>
+                    </c:if>
+                    <c:if test="${!isSearch}">
+                        <li class="active"><s:message code="products.product" /> </li>
+                    </c:if>
                 </ul>
-                <h3> Products Name
-                    <small class="pull-right"></small>
-                </h3>
+                <c:if test="${isSearch}">
+                    <h3><s:message code="products.searchResult" arguments="${totalResults},${key}" /> </h3>
+                </c:if>
+                <c:if test="${!isSearch&&shopId==null}">
+                    <h3><s:message code="products.totalProducts" arguments="${totalResults}" /> </h3>
+                </c:if>
+                <c:if test="${shopId != null}">
+                    <h3><s:message code="products.totalProductsOfShop" arguments="${totalResults},${products[0].shop.name}" /> </h3>
+                </c:if>
                 <hr class="soft"/>
                 <br class="clr"/>
-                <div class="tab-content">
-                    <div class="tab-pane  active" id="blockView">
-                        <ul class="thumbnails">
-                            <c:forEach items="${products}" var="product">
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="products.html?productId=${product.id}"><img
-                                                src="${product.image[0]}" alt="${product.name}"/></a>
-                                        <div class="caption">
-                                            <h5>${product.name}</h5>
-                                            <h4 style="text-align:center"><a class="btn" href="products.html?productId=${product.id}"> <i
-                                                    class="fa fa-search-plus"></i></a> <a class="btn" onclick="addToCart('${product.id}')">Add
-                                                to <i class="fa fa-shopping-cart"></i></a> <a
-                                                    class="btn btn-primary" href="#">$${product.price}</a></h4>
-                                        </div>
-                                    </div>
+                <ul class="thumbnails">
+                    <c:forEach items="${products}" var="product">
+                        <li class="span3">
+                            <div class="thumbnail">
+                                <a href="products.html?productId=${product.id}"><img
+                                        src="${product.image[0]}" alt="${product.name}"/></a>
+                                <div class="caption">
+                                    <h6 style="max-width: 90%;overflow: hidden;">${product.name}</h6>
+                                    <h4 style="text-align:center"><a class="btn"
+                                                                     href="products.html?productId=${product.id}"> <i
+                                            class="fa fa-search-plus"></i></a> <a class="btn"
+                                                                                  onclick="addToCart('${product.id}')">Add
+                                        to <i class="fa fa-shopping-cart"></i></a> <a
+                                            class="btn btn-primary" href="#">$${product.price}</a></h4>
+                                </div>
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+                <hr class="soft"/>
+                <c:if test="${isSearch}">
+                    <div class="pagination" style="margin-left: 30%;">
+                        <ul>
+                            <li>
+                                <a href="search-product.html?key=${key}&categoryId=${categoryId}&page=${currentPage > 1 ? currentPage-1 : 1}">&lsaquo;&lsaquo;</a>
+                            </li>
+                            <c:forEach var="i" begin="1" end="${totalPages}" step="1">
+                                <li class="${currentPage == i?'active':''}"><a
+                                        href="search-product.html?key=${key}&categoryId=${categoryId}&page=${i}">${i}</a>
                                 </li>
                             </c:forEach>
+                            <li>
+                                <a href="search-product.html?key=${key}&categoryId=${categoryId}&page=${currentPage < totalPages ? currentPage+1 : totalPages}">&rsaquo;&rsaquo;</a>
+                            </li>
                         </ul>
-                        <hr class="soft"/>
                     </div>
-                </div>
-                <div class="pagination">
-                    <ul>
-                        <li><a href="search-product.html?key=${key}&categoryId=${categoryId}&page=${page > 1 ? page-1 : 1}">&lsaquo;</a></li>
-                        <c:forEach var="i" begin="1" end="${totalPages}" step="1">
-                            <li><a href="search-product.html?key=${key}&categoryId=${categoryId}&page=${i}" class="${currentPage == i ? 'active' : ''}">${i}</a></li>
-                        </c:forEach>
-                        <li><a href="search-product.html?key=${key}&categoryId=${categoryId}&page=${page < totalPages ? page+1 : totalPages}">&rsaquo;</a></li>
-                    </ul>
-                </div>
+                </c:if>
+                <c:if test="${!isSearch&&shopId==null}">
+                    <div class="pagination" style="margin-left: 30%;">
+                        <ul>
+                            <li>
+                                <a href="products.html?&categoryId=${categoryId}&page=${currentPage > 1 ? currentPage-1 : 1}">&lsaquo;&lsaquo;</a>
+                            </li>
+                            <c:forEach var="i" begin="1" end="${totalPages}" step="1">
+                                <li class="${currentPage == i?'active':''}"><a
+                                        href="products.html?&categoryId=${categoryId}&page=${i}">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li>
+                                <a href="products.html?&categoryId=${categoryId}&page=${currentPage < totalPages ? currentPage+1 : totalPages}">&rsaquo;&rsaquo;</a>
+                            </li>
+                        </ul>
+                    </div>
+                </c:if>
+                <c:if test="${shopId != null}">
+                    <div class="pagination" style="margin-left: 30%;">
+                        <ul>
+                            <li>
+                                <a href="products.html?&shopId=${shopId}&page=${currentPage > 1 ? currentPage-1 : 1}">&lsaquo;&lsaquo;</a>
+                            </li>
+                            <c:forEach var="i" begin="1" end="${totalPages}" step="1">
+                                <li class="${currentPage == i?'active':''}"><a
+                                        href="products.html?&shopId=${shopId}&page=${i}">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li>
+                                <a href="products.html?&shopId=${shopId}&page=${currentPage < totalPages ? currentPage+1 : totalPages}">&rsaquo;&rsaquo;</a>
+                            </li>
+                        </ul>
+                    </div>
+                </c:if>
                 <br class="clr"/>
             </div>
         </div>

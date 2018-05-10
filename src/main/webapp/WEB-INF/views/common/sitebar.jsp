@@ -30,57 +30,42 @@
     </div>
     <ul id="sideMemu" class="nav nav-tabs nav-stacked">
         <li class="subMenu open">
-            <a href="products.html"><s:message code="home.electronics" /></a>
+            <a href="products.html?categoryId=TBDT"><s:message code="home.electronics" /></a>
         </li>
         <li class="subMenu">
-            <a href="products.html"><s:message code="home.fashion" />  </a>
+            <a href="products.html?categoryId=TT"><s:message code="home.fashion" />  </a>
         </li>
         <li class="subMenu">
-            <a href="products.html"><s:message code="home.supermarketsAndGroceryStores" /></a>
+            <a href="products.html?categoryId=DGDS"><s:message code="home.supermarketsAndGroceryStores" /></a>
         </li>
         <li>
-            <a href="products.html"><s:message code="home.healthAndBeauty" /></a>
+            <a href="products.html?categoryId=TTDL"><s:message code="home.sportAndTourism" /></a>
         </li>
         <li>
-            <a href="products.html"><s:message code="home.sportAndTourism" /></a>
-        </li>
-        <li>
-            <a href="products.html"><s:message code="home.bookAndEntertainment" /></a>
+            <a href="products.html?categoryId=SGT"><s:message code="home.bookAndEntertainment" /></a>
         </li>
     </ul>
     <br/>
+    <c:forEach items="${featureProducts}" var="product" begin="6" end="7">
     <div class="thumbnail">
-        <img src="resources/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera" />
+        <a href="products.html?productId=${product.id}">
+            <img src="${product.image[0]}" alt=""/>
+        </a>
         <div class="caption">
-            <h5>Panasonic</h5>
+            <h5>${product.name}</h5>
             <h4 style="text-align:center">
-                <a class="btn" href="/product-detail">
+                <a class="btn" href="products.html?productId=${product.id}">
                     <i class="fa fa-search-plus"></i>
                 </a>
                 <a class="btn" href="#"><s:message code="home.addTo" />
                     <i class="fa fa-shopping-cart"></i>
                 </a>
-                <a class="btn btn-primary" href="#">$222.00</a>
+                <a class="btn btn-primary" href="#">$${product.newPrice}</a>
             </h4>
         </div>
     </div>
     <br/>
-    <div class="thumbnail">
-        <img src="resources/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-        <div class="caption">
-            <h5>Kindle</h5>
-            <h4 style="text-align:center">
-                <a class="btn" href="/product-detail">
-                    <i class="fa fa-search-plus"></i>
-                </a>
-                <a class="btn" href="#"><s:message code="home.addTo" />
-                    <i class="fa fa-shopping-cart"></i>
-                </a>
-                <a class="btn btn-primary" href="#">$222.00</a>
-            </h4>
-        </div>
-    </div>
-    <br/>
+    </c:forEach>
     <div class="thumbnail">
         <img src="resources/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
         <div class="caption">

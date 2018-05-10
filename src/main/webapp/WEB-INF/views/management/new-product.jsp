@@ -83,13 +83,8 @@
     </div>
 </div>
 <c:if test="${addSucceed != null}">
-    <span class="hidden" id="title"><s:message code="shop-management.product.popup-title"/></span>
-    <span class="hidden" id="message"><s:message code="shop-management.product.addSucceed"
-                                                 arguments="${addSucceed}"/></span>
     <script>
-        let title = $('#title').html();
-        let msg = $('#message').html();
-        showPopup(title, msg);
+        showPopup("Thông báo", "Thêm thành công sản phẩm <b>${addSucceed}</b> !");
     </script>
 </c:if>
 <!-- /. PAGE INNER  -->

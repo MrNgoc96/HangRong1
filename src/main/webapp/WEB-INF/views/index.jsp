@@ -13,6 +13,11 @@
 <body>
 <jsp:include page="common/menu.jsp"/>
 <jsp:include page="common/slider.jsp"/>
+<c:if test="${orderSucceed}">
+    <script>
+        showPopup("Thông báo","Bạn vừa đặt hàng thành công, đơn hàng của bạn đang được chúng tôi xử lý !");
+    </script>
+</c:if>
 <div id="mainBody">
     <div class="container">
         <div class="row">
@@ -75,7 +80,7 @@
                 </div>
                 <h4><s:message code="home.featuredProducts" /></h4>
                 <ul class="thumbnails">
-                    <c:forEach items="${featureProducts}" var="product">
+                    <c:forEach items="${featureProducts}" var="product" end="5">
                         <li class="span3">
                             <div class="thumbnail">
                                 <a href="products.html?productId=${product.id}">

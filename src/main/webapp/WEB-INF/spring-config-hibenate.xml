@@ -20,7 +20,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://sql12.freesqldatabase.com/sql12237124" />
         <property name="username" value="sql12237124" />
-        <property name="password" value="4JW9LMrMJf" />
+        <property name="password" value="longoc96" />
     </bean>
 
     <bean id="sessionFactory"
