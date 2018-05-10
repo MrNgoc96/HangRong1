@@ -7,12 +7,20 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="dataSource"
-          class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>
-        <property name="url" value="jdbc:jtds:sqlserver://localhost:1433;databaseName=HangRong"/>
-        <property name="username" value="sa"/>
-        <property name="password" value="12345"/>
+    <!--<bean id="dataSource"-->
+          <!--class="org.apache.commons.dbcp.BasicDataSource">-->
+        <!--<property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>-->
+        <!--<property name="url" value="jdbc:jtds:sqlserver://localhost:1433;databaseName=HangRong"/>-->
+        <!--<property name="username" value="sa"/>-->
+        <!--<property name="password" value="12345"/>-->
+    <!--</bean>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+                destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://sql12.freesqldatabase.com/sql12237124" />
+        <property name="username" value="sql12237124" />
+        <property name="password" value="4JW9LMrMJf" />
     </bean>
 
     <bean id="sessionFactory"
@@ -22,10 +30,9 @@
         </property>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <prop key="hibernate.default_schema">dbo</prop>
             </props>
         </property>
         <property name="packagesToScan" value="hangrong.entity"/>

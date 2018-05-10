@@ -22,6 +22,7 @@
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="basename" value="i18n/messages"/>
+        <property name="cacheSeconds" value="10"/>
     </bean>
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
@@ -30,10 +31,36 @@
         <property name="defaultLocale" value="vi"/>
         <property name="cookieMaxAge" value="500000"/>
     </bean>
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="587"/>
+        <property name="username" value="hangrongonline113@gmail.com"/>
+        <property name="password" value="1213141516h"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
     <mvc:interceptors>
         <bean id="localeChangeInterceptors"
               class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>
         </bean>
+        <mvc:interceptor>
+            <mvc:mapping path="/shop-management.html"/>
+            <bean id="shopSecurity" class="hangrong.interceptor.ShopManagementInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/personal-information.html"/>
+            <mvc:mapping path="/check-password.html"/>
+            <mvc:mapping path="/change-password.html"/>
+            <mvc:mapping path="/cancel-order.html"/>
+            <bean id="customerSecurity" class="hangrong.interceptor.CustomerInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>
