@@ -2,69 +2,15 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="HangRong:war exploded" />
+      <artifact name="HangRong:war" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca70d47b-f7d1-41e0-af78-0b71678df375" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_2_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/HangRong_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/HangRong_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_jtds_jtds_1_3_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HangRong.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HangRong.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/controller/ShopManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/controller/ShopManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/interceptor/CustomerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/interceptor/CustomerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/interceptor/ShopManagementInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/interceptor/ShopManagementInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/CartBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/CartBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/CrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/CrudRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/GoogleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/GoogleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/MailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/MailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/ProductPTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/ProductPTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/ShopDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/ShopDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/hangrong/model/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hangrong/model/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-hibenate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-hibenate.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/ShopManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/controller/ShopManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/OrderDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/OrderDetail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Shop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/Shop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/CartBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/CartBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/CrudRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/CrudRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/CustomerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/CustomerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/GoogleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/GoogleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/ProductDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/ProductPTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/ProductPTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/ShopDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/ShopDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/classes/hangrong/model/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/lib/jtds-1.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/spring-config-hibenate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/spring-config-hibenate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangrong/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangrong/WEB-INF/web.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -98,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-main.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1026">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
             </state>
           </provider>
         </entry>
@@ -106,8 +52,17 @@
       <file leaf-file-name="spring-config-hibenate.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-hibenate.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+            <state relative-caret-position="203">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="617">
+              <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -172,19 +127,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hangrong/entity/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="122">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-677" />
           </provider>
         </entry>
       </file>
@@ -244,7 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/hangrong/entity/Product.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/hangrong.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/head.jsp" />
@@ -295,6 +242,7 @@
         <option value="$PROJECT_DIR$/src/main/java/hangrong/entity/Order.java" />
         <option value="$PROJECT_DIR$/src/main/java/hangrong/entity/Shop.java" />
         <option value="$PROJECT_DIR$/src/main/java/hangrong/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -423,6 +371,11 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hangrong-v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hangrong-v2" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -437,7 +390,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.40229884" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
@@ -666,12 +619,12 @@
       <workItem from="1525855822397" duration="170000" />
       <workItem from="1525856101153" duration="46000" />
       <workItem from="1525856368359" duration="954000" />
-      <workItem from="1525915736130" duration="5078000" />
+      <workItem from="1525915736130" duration="7214000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="409557000" />
+    <option name="totallyTimeSpent" value="411693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -697,7 +650,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32882884" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32939914" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49783784" visible="true" weight="0.5066274" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49783784" weight="0.5066274" />
       <window_info anchor="bottom" id="Spring" order="11" weight="0.32946634" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32885906" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27046978" />
@@ -1029,22 +982,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-677" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1026">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-hibenate.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
@@ -1098,8 +1039,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hangrong/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="122">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config-hibenate.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="44" column="10" selection-start-line="44" selection-start-column="10" selection-end-line="44" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1122,7 +1077,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring</last-edited>
+          <last-edited>Web (HangRong)|Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
